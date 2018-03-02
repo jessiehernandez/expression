@@ -1,0 +1,12 @@
+{
+  "archive": {
+    "exclude": ["test"]
+  },
+  "autoload": {
+    "psr-4": {
+      "JessieHernandez\\Expression\\": "src/JessieHernandez/Expression/"
+    }
+  },
+  "description": "Object-oriented library to represent, execute and transform expressions, whether logical or mathematical",
+  "name": "jessiehernandez/expression"
+}
