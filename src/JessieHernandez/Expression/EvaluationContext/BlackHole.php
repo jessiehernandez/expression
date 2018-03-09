@@ -31,7 +31,14 @@ class BlackHole implements EvaluationContext
     /**
      * {@inheritdoc}
      */
-    public function set(string $name, $value)
+    public function set(string $name, $value) : void
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMultiple(array $variables) : void
     {
     }
 }

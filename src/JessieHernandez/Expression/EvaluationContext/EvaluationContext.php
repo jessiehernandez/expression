@@ -35,5 +35,13 @@ interface EvaluationContext
      * @param  mixed $value The value of the variable.
      * @return void
      */
-    public function set(string $name, $value);
+    public function set(string $name, $value) : void;
+
+    /**
+     * Sets multiple variables.
+     *
+     * @param  array $variables A variable name and value map.
+     * @return void
+     */
+    public function setMultiple(array $variables) : void;
 }

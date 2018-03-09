@@ -31,9 +31,17 @@ class Standard implements EvaluationContext
     /**
      * {@inheritdoc}
      */
-    public function set(string $name, $value)
+    public function set(string $name, $value) : void
     {
         $this->data[$name] = $value;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMultiple(array $variables) : void
+    {
+        $this->data = array_merge($this->data, $variables);
     }
 
     /**
