@@ -45,7 +45,7 @@ class FunctionalJavascript extends AbstractVisitor
      */
     public function visitVariable(VariableExpression $expr)
     {
-        return 'Expr.variable(' . $expr->getChildren()[0]->accept($this) . ')';
+        return $this->className . '.variable(' . $expr->getChildren()[0]->accept($this) . ')';
     }
 
     /**
@@ -53,7 +53,7 @@ class FunctionalJavascript extends AbstractVisitor
      */
     protected function twoExpressionOperator(string $operator, array $operands)
     {
-        return self::$operatorMap[$operator]
+        return $this->className . '.' . self::$operatorMap[$operator]
             . '('
             . $operands[0]->accept($this)
             . ','
@@ -74,4 +74,11 @@ class FunctionalJavascript extends AbstractVisitor
         '&&' => 'logicalAnd',
         '*'  => 'mul'
     ];
+
+    /**
+     * Name of the JavaScript class that holds all the operator functions.
+     *
+     * @var string
+     */
+    private $className = 'Expr';
 }
