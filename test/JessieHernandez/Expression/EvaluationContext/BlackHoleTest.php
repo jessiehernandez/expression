@@ -31,6 +31,7 @@ class BlackHoleTest extends TestCase
     {
         $context = new BlackHole();
         $context->set('test', 'value');
+        $context->setMultiple(['a' => 'b']);
 
         $this->assertNull($context->get('test'));
         $this->assertNull($context->get('other'));
