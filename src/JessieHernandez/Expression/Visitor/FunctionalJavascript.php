@@ -26,6 +26,16 @@ use JessieHernandez\Expression\Variable as VariableExpression;
 class FunctionalJavascript extends AbstractVisitor
 {
     /**
+     * Constructor.
+     *
+     * @param array $options Options.
+     */
+    public function __construct(array $options = [])
+    {
+        $this->className = ($options['className'] ?? $this->className);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function visit(Expression $expr, Expression ...$subexpressions)
