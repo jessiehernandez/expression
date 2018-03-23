@@ -13,6 +13,7 @@ namespace JessieHernandez\Expression\Visitor;
 
 use JessieHernandez\Expression\EvaluationContext\BlackHole;
 use JessieHernandez\Expression\Expression;
+use JessieHernandez\Expression\InArray as InArrayExpression;
 use JessieHernandez\Expression\Terminal as TerminalExpression;
 use JessieHernandez\Expression\Variable as VariableExpression;
 
@@ -40,6 +41,15 @@ class FunctionalJavascript extends AbstractVisitor
      */
     public function visit(Expression $expr, Expression ...$subexpressions)
     {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function visitInArray(InArrayExpression $expr)
+    {
+        $operands = $expr->getChildren();
+        return $this->className . '.inArray(' . $operands[0]->accept($this) . ',' . $operands[1]->accept($this) . ')';
     }
 
     /**
@@ -77,9 +87,11 @@ class FunctionalJavascript extends AbstractVisitor
      * @var array
      */
     private static $operatorMap = [
-        '='  => 'equals',
+        '==' => 'equals',
         '>'  => 'greaterThan',
         '>=' => 'greaterThanOrEqualTo',
+        'in' => 'inArray',
+        '<'  => 'lessThan',
         '<=' => 'lessThanOrEqualTo',
         '&&' => 'logicalAnd',
         '*'  => 'mul'

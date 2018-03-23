@@ -13,6 +13,7 @@ namespace JessieHernandez\Expression\Visitor;
 
 use JessieHernandez\Expression\EvaluationContext\BlackHole;
 use JessieHernandez\Expression\Expression;
+use JessieHernandez\Expression\InArray as InArrayExpression;
 use JessieHernandez\Expression\Terminal as TerminalExpression;
 use JessieHernandez\Expression\Variable as VariableExpression;
 
@@ -36,12 +37,23 @@ class Literal extends AbstractVisitor
     /**
      * {@inheritdoc}
      */
+    public function visitInArray(InArrayExpression $expr)
+    {
+        $operands = $expr->getChildren();
+        return 'in_array(' . $operands[0]->accept($this) . ',' . $operands[1]->accept($this) . ')';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function visitTerminal(TerminalExpression $expr)
     {
         $result = $expr->evaluate(new BlackHole());
 
-        if (!is_numeric($result)) {
+        if (is_string($result) && !is_numeric($result)) {
             $result = "'" . addslashes($result) . "'";
+        } elseif (is_array($result)) {
+            $result = json_encode($result);
         }
 
         return $result;

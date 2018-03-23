@@ -15,12 +15,12 @@ use JessieHernandez\Expression\EvaluationContext\EvaluationContext;
 use JessieHernandez\Expression\Visitor\Visitor;
 
 /**
- * And expression.
+ * In-array expression.
  *
  * @package JessieHernandez\Expression
  * @author  Jessie Hernandez <jessie.hernandez@protonmail.com>
  */
-class LogicalAnd implements Expression
+class InArray implements Expression
 {
     use TwoOperandExpression;
 
@@ -29,7 +29,7 @@ class LogicalAnd implements Expression
      */
     public function accept(Visitor $visitor)
     {
-        return $visitor->visitLogicalAnd($this);
+        return $visitor->visitInArray($this);
     }
 
     /**
@@ -37,6 +37,6 @@ class LogicalAnd implements Expression
      */
     public function evaluate(EvaluationContext $context)
     {
-        return ($this->exprA->evaluate($context) && $this->exprB->evaluate($context));
+        return in_array($this->exprA->evaluate($context), $this->exprB->evaluate($context));
     }
 }

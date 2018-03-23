@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JessieHernandez\Expression;
 
 use JessieHernandez\Expression\EvaluationContext\EvaluationContext;
+use JessieHernandez\Expression\Visitor\Visitor;
 
 /**
  * Greater-than expression.
@@ -22,6 +23,14 @@ use JessieHernandez\Expression\EvaluationContext\EvaluationContext;
 class GreaterThan implements Expression
 {
     use TwoOperandExpression;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function accept(Visitor $visitor)
+    {
+        return $visitor->visitGreaterThan($this);
+    }
 
     /**
      * {@inheritdoc}

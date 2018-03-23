@@ -37,7 +37,7 @@ class Terminal implements Expression
      */
     public function accept(Visitor $visitor)
     {
-        return $visitor->visit($this);
+        return $visitor->visitTerminal($this);
     }
 
     /**

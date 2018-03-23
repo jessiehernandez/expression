@@ -41,7 +41,7 @@ class Variable implements Expression
      */
     public function accept(Visitor $visitor)
     {
-        return $visitor->visit($this);
+        return $visitor->visitVariable($this);
     }
 
     /**

@@ -15,6 +15,8 @@ use JessieHernandez\Expression\Equals as EqualsExpression;
 use JessieHernandez\Expression\Expression;
 use JessieHernandez\Expression\GreaterThan as GreaterThanExpression;
 use JessieHernandez\Expression\GreaterThanOrEqualTo as GreaterThanOrEqualToExpression;
+use JessieHernandez\Expression\InArray as InArrayExpression;
+use JessieHernandez\Expression\LessThan as LessThanExpression;
 use JessieHernandez\Expression\LessThanOrEqualTo as LessThanOrEqualToExpression;
 use JessieHernandez\Expression\LogicalAnd as LogicalAndExpression;
 use JessieHernandez\Expression\Mul as MulExpression;
@@ -61,6 +63,22 @@ interface Visitor
      * @return mixed The result of the visit.
      */
     public function visitGreaterThanOrEqualTo(GreaterThanOrEqualToExpression $expr);
+
+    /**
+     * Visits an InArray expression.
+     *
+     * @param  InArrayExpression $expr Expression.
+     * @return mixed The result of the visit.
+     */
+    public function visitInArray(InArrayExpression $expr);
+
+    /**
+     * Visits a LessThan expression.
+     *
+     * @param  LessThan $expr Expression.
+     * @return mixed The result of the visit.
+     */
+    public function visitLessThan(LessThanExpression $expr);
 
     /**
      * Visits a LessThanOrEqualTo expression.

@@ -36,14 +36,6 @@ trait TwoOperandExpression
     /**
      * {@inheritdoc}
      */
-    public function accept(Visitor $visitor)
-    {
-        return $visitor->visit($this);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getChildren() : array
     {
         return [$this->exprA, $this->exprB];

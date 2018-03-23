@@ -41,7 +41,7 @@ class Between implements Expression
      */
     public function accept(Visitor $visitor)
     {
-        return $visitor->visit($this->andExpr);
+        return $visitor->visitLogicalAnd($this->andExpr);
     }
 
     /**

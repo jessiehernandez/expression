@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace JessieHernandez\Expression;
 
 use JessieHernandez\Expression\EvaluationContext\EvaluationContext;
+use JessieHernandez\Expression\Visitor\Visitor;
 
 /**
  * Less-than-or-equals expression.
@@ -17,6 +18,14 @@ use JessieHernandez\Expression\EvaluationContext\EvaluationContext;
 class LessThanOrEqualTo implements Expression
 {
     use TwoOperandExpression;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function accept(Visitor $visitor)
+    {
+        return $visitor->visitLessThanOrEqualTo($this);
+    }
 
     /**
      * {@inheritdoc}
