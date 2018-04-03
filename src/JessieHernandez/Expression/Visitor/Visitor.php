@@ -19,6 +19,7 @@ use JessieHernandez\Expression\InArray as InArrayExpression;
 use JessieHernandez\Expression\LessThan as LessThanExpression;
 use JessieHernandez\Expression\LessThanOrEqualTo as LessThanOrEqualToExpression;
 use JessieHernandez\Expression\LogicalAnd as LogicalAndExpression;
+use JessieHernandez\Expression\LogicalOr as LogicalOrExpression;
 use JessieHernandez\Expression\Mul as MulExpression;
 use JessieHernandez\Expression\Terminal as TerminalExpression;
 use JessieHernandez\Expression\Variable as VariableExpression;
@@ -95,6 +96,14 @@ interface Visitor
      * @return mixed The result of the visit.
      */
     public function visitLogicalAnd(LogicalAndExpression $expr);
+
+    /**
+     * Visits a LogicalOr expression.
+     *
+     * @param  LogicalOrExpression $expr Expression.
+     * @return mixed The result of the visit.
+     */
+    public function visitLogicalOr(LogicalOrExpression $expr);
 
     /**
      * Visits a Mul expression.

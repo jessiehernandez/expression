@@ -19,6 +19,7 @@ use JessieHernandez\Expression\InArray as InArrayExpression;
 use JessieHernandez\Expression\LessThan as LessThanExpression;
 use JessieHernandez\Expression\LessThanOrEqualTo as LessThanOrEqualToExpression;
 use JessieHernandez\Expression\LogicalAnd as LogicalAndExpression;
+use JessieHernandez\Expression\LogicalOr as LogicalOrExpression;
 use JessieHernandez\Expression\Mul as MulExpression;
 
 /**
@@ -84,6 +85,14 @@ abstract class AbstractVisitor implements Visitor
     public function visitLogicalAnd(LogicalAndExpression $expr)
     {
         return $this->twoExpressionOperator('&&', $expr->getChildren());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function visitLogicalOr(LogicalOrExpression $expr)
+    {
+        return $this->twoExpressionOperator('||', $expr->getChildren());
     }
 
     /**
