@@ -21,6 +21,7 @@ use JessieHernandez\Expression\LessThanOrEqualTo as LessThanOrEqualToExpression;
 use JessieHernandez\Expression\LogicalAnd as LogicalAndExpression;
 use JessieHernandez\Expression\LogicalOr as LogicalOrExpression;
 use JessieHernandez\Expression\Mul as MulExpression;
+use JessieHernandez\Expression\NotEquals as NotEqualsExpression;
 use JessieHernandez\Expression\Terminal as TerminalExpression;
 use JessieHernandez\Expression\Variable as VariableExpression;
 
@@ -76,7 +77,7 @@ interface Visitor
     /**
      * Visits a LessThan expression.
      *
-     * @param  LessThan $expr Expression.
+     * @param  LessThanExpression $expr Expression.
      * @return mixed The result of the visit.
      */
     public function visitLessThan(LessThanExpression $expr);
@@ -112,6 +113,14 @@ interface Visitor
      * @return mixed The result of the visit.
      */
     public function visitMul(MulExpression $expr);
+
+    /**
+     * Visits a NotEquals expression.
+     *
+     * @param  NotEqualsExpression $expr Expression.
+     * @return mixed The result of the visit.
+     */
+    public function visitNotEquals(NotEqualsExpression $expr);
 
     /**
      * Visits a Terminal expression.

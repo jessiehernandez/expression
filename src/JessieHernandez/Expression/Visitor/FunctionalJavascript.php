@@ -95,7 +95,8 @@ class FunctionalJavascript extends AbstractVisitor
         '<=' => 'lessThanOrEqualTo',
         '&&' => 'logicalAnd',
         '||' => 'logicalOr',
-        '*'  => 'mul'
+        '*'  => 'mul',
+        '!=' => 'notEquals',
     ];
 
     /**

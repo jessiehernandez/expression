@@ -21,6 +21,7 @@ use JessieHernandez\Expression\LessThanOrEqualTo as LessThanOrEqualToExpression;
 use JessieHernandez\Expression\LogicalAnd as LogicalAndExpression;
 use JessieHernandez\Expression\LogicalOr as LogicalOrExpression;
 use JessieHernandez\Expression\Mul as MulExpression;
+use JessieHernandez\Expression\NotEquals as NotEqualsExpression;
 
 /**
  * Convenience base class for visitors.
@@ -101,6 +102,14 @@ abstract class AbstractVisitor implements Visitor
     public function visitMul(MulExpression $expr)
     {
         return $this->twoExpressionOperator('*', $expr->getChildren());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function visitNotEquals(NotEqualsExpression $expr)
+    {
+        return $this->twoExpressionOperator('!=', $expr->getChildren());
     }
 
     /**
