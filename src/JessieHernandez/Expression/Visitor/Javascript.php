@@ -49,7 +49,7 @@ class Javascript extends AbstractVisitor
     public function visitInArray(InArrayExpression $expr)
     {
         $operands = $expr->getChildren();
-        return $this->variablePrefix . $operands[1]->accept($this) . '.includes(' . $operands[0]->accept($this) . ')';
+        return $operands[1]->accept($this) . '.includes(' . $operands[0]->accept($this) . ')';
     }
 
     /**
