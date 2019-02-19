@@ -38,6 +38,6 @@ class InArray implements Expression
     public function evaluate(EvaluationContext $context)
     {
         $array = $this->exprB->evaluate($context);
-        return in_array($this->exprA->evaluate($context), ($array ?? []));
+        return in_array($this->exprA->evaluate($context), (array) ($array ?? []));
     }
 }
